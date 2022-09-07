@@ -3,7 +3,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import './App.css';
 import { numbers, upperLetters, lowerLetters, symbols } from './characters'
 import 'react-toastify/dist/ReactToastify.css'
-import { COPY_SUCCESS, NONE_SELECTED, NO_PW } from './msg'
+import { COPY_SUCCESS } from './msg'
 
 function App() {
   const [password, setPassword] = useState('')
@@ -15,46 +15,41 @@ function App() {
 
   const handleGenPass = (e) => {
     if (!incUpper && !incLower && !incSym && !incNum) {
-      notifyUser(NONE_SELECTED, true)
+      notifyUser("Please select at least one option below.", true)
     }
 
-    let charList = '';
+    let allowedChars = '';
 
     if (incLower) {
-      charList += lowerLetters;
+      allowedChars += lowerLetters;
     }
 
     if (incUpper) {
-      charList += upperLetters;
+      allowedChars += upperLetters;
     }
 
     if (incSym) {
-      charList += symbols;
+      allowedChars += symbols;
     }
 
     if (incNum) {
-      charList += numbers;
+      allowedChars += numbers;
     }
 
-    setPassword(genPassword(charList));
+    setPassword(genPassword(allowedChars));
   }
 
-  function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+  const genPassword = (characterList) => {
+    let password = ''
+    const characterListLength = characterList.length
 
-  const genPassword = (charList) => {
-    let pw = ''
-    let i = 0;
-    while (i < passwordLen) {
-      let randomInt = getRndInteger(33, 127);
-      if (charList.includes(String.fromCharCode(randomInt))) {
-        pw += String.fromCharCode(randomInt);
-        i += 1;
-      }
+    for (let i = 0; i < passwordLen; i++) {
+      const characterIndex = Math.round(Math.random() * characterListLength)
+      password = password + characterList.charAt(characterIndex)
     }
-    return pw;
+    return password
   }
+
 
   const copyToClipboard = () => {
     const newTextArea = document.createElement('textarea');
@@ -68,7 +63,7 @@ function App() {
   const notifyUser = (message, hasError = false) => {
     if (hasError) {
       toast.error(message, {
-        position: "top-center",
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -78,7 +73,7 @@ function App() {
       })
     } else {
       toast(message, {
-        position: "top-center",
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -91,7 +86,7 @@ function App() {
 
   const handleCopy = (e) => {
     if (password === '') {
-      notifyUser(NO_PW, true);
+      notifyUser('No password was copied.', true);
     } else {
       copyToClipboard();
       notifyUser(COPY_SUCCESS);
@@ -103,9 +98,7 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="generator">
-          <h2 className="generator_header">
-            PassGen
-          </h2>
+          <h2 className="generator_header">PassGen</h2>
           <div className="generator_password">
             <h3>{password}</h3>
             <button onClick={handleCopy} className="copy_button">
@@ -144,7 +137,6 @@ function App() {
           </div>
           <br></br>
           <button onClick={handleGenPass} className="generate_button">Generate</button>
-
           <ToastContainer
             position="top-center"
             autoClose={5000}
