@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import './App.css';
 import { numbers, upperLetters, lowerLetters, symbols } from './characters'
-
+import 'react-toastify/dist/ReactToastify.css'
+import { COPY_SUCCESS, NONE_SELECTED, NO_PW } from './msg'
 
 function App() {
   const [password, setPassword] = useState('')
@@ -12,7 +14,12 @@ function App() {
   const [incSym, setIncSym] = useState(false)
 
   const handleGenPass = (e) => {
+    if (!incUpper && !incLower && !incSym && !incNum) {
+      notifyUser(NONE_SELECTED, true)
+    }
+
     let charList = '';
+
     if (incLower) {
       charList += lowerLetters;
     }
@@ -46,7 +53,50 @@ function App() {
         i += 1;
       }
     }
-    return pw
+    return pw;
+  }
+
+  const copyToClipboard = () => {
+    const newTextArea = document.createElement('textarea');
+    newTextArea.innerText = password;
+    document.body.appendChild(newTextArea);
+    newTextArea.select();
+    document.execCommand('copy');
+    newTextArea.remove();
+  }
+
+  const notifyUser = (message, hasError = false) => {
+    if (hasError) {
+      toast.error(message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+    } else {
+      toast(message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+    }
+  }
+
+  const handleCopy = (e) => {
+    if (password === '') {
+      notifyUser(NO_PW, true);
+    } else {
+      copyToClipboard();
+      notifyUser(COPY_SUCCESS);
+    }
+
   }
 
   return (
@@ -58,7 +108,7 @@ function App() {
           </h2>
           <div className="generator_password">
             <h3>{password}</h3>
-            <button className="copy_button">
+            <button onClick={handleCopy} className="copy_button">
               <i className='far fa-clipboard'></i>
             </button>
           </div>
@@ -94,6 +144,18 @@ function App() {
           </div>
           <br></br>
           <button onClick={handleGenPass} className="generate_button">Generate</button>
+
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </div>
       </div>
 
