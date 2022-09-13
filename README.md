@@ -1,8 +1,10 @@
-# Getting Started with Create React App
+# [PassGen App](https://passgen-app.herokuapp.com)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app generates a password between a length of 8 to 20 characters. The user has the option to select various types of characters within the password, including: lowercase letters, uppercase letters, numbers, and special symbols. At least one of those aforementioned options must be selected to successfully generate a password.
 
-## Available Scripts
+
+
+## Implementation Instructions
 
 In the project directory, you can run:
 
