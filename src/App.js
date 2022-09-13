@@ -40,14 +40,14 @@ function App() {
   }
 
   const genPassword = (characterList) => {
-    let password = ''
-    const characterListLength = characterList.length
+    let password = '';
+    const characterListLength = characterList.length;
 
     for (let i = 0; i < passwordLen; i++) {
-      const characterIndex = Math.round(Math.random() * characterListLength)
-      password = password + characterList.charAt(characterIndex)
+      const characterIndex = Math.round(Math.random() * characterListLength);
+      password += characterList.charAt(characterIndex);
     }
-    return password
+    return password;
   }
 
 
