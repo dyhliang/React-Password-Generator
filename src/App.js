@@ -1,6 +1,7 @@
+import './App.css';
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import './App.css';
+import { MdPassword } from "react-icons/md";
 import { numbers, upperLetters, lowerLetters, symbols } from './characters'
 import 'react-toastify/dist/ReactToastify.css'
 import { COPY_SUCCESS } from './msg'
@@ -98,7 +99,7 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="generator">
-          <h2 className="generator_header">PassGen</h2>
+          <h1 className="generator_header"><b><MdPassword></MdPassword> PassGen <MdPassword></MdPassword></b></h1>
           <div className="generator_password">
             <h3>{password}</h3>
             <button onClick={handleCopy} className="copy_button">

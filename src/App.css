@@ -43,7 +43,7 @@
 }
 
 .form-group{
-    font-family: 'Impact';
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     color: white;
@@ -52,6 +52,7 @@
 
 .generate_button{
     background: #b90e0a;
+    font-weight: bold;
     border: none;
     display: block;
     width: 100%;
