@@ -41,13 +41,12 @@ function App() {
 
   let genPassword = (characterList) => {
     let password = '';
-    const characterListLength = characterList.length;
 
-    if (passwordLen < 8 || passwordLen > 20 || Number.isInteger(passwordLen) === false) {
+    if (passwordLen < 8 || passwordLen > 20) {
       notifyUser(INVALID_LEN, true);
     } else {
       for (let i = 0; i < passwordLen; i++) {
-        const characterIndex = Math.round(Math.random() * characterListLength);
+        const characterIndex = Math.round(Math.random() * characterList.length);
         password += characterList.charAt(characterIndex);
       }
       return password;
@@ -112,7 +111,7 @@ function App() {
 
           <div className='form-group'>
             <label htmlFor='password-length'>Password Length</label>
-            <input defaultValue={passwordLen} onChange={(e) => setPasswordLen(e.target.value)}
+            <input defaultValue={passwordLen} onChange={(e) => setPasswordLen(e.target.value.replace(/[^0-9]/g, ""))}
               type="number" id="password-length" name="password-length" max="20" min="8" />
           </div>
 
