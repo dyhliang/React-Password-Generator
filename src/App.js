@@ -1,22 +1,21 @@
 import './App.css';
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-
 import { numbers, upperLetters, lowerLetters, symbols } from './characters'
 import 'react-toastify/dist/ReactToastify.css'
-import { COPY_SUCCESS } from './msg'
+import { COPY_SUCCESS, NONE_SELECTED, NO_PW, INVALID_LEN } from './msg'
 
 function App() {
-  const [password, setPassword] = useState('')
-  const [passwordLen, setPasswordLen] = useState(20)
-  const [incUpper, setIncUpper] = useState(false)
-  const [incLower, setIncLower] = useState(false)
-  const [incNum, setIncNum] = useState(false)
-  const [incSym, setIncSym] = useState(false)
+  let [password, setPassword] = useState('');
+  let [passwordLen, setPasswordLen] = useState(8);
+  let [incUpper, setIncUpper] = useState(false);
+  let [incLower, setIncLower] = useState(false);
+  let [incNum, setIncNum] = useState(false);
+  let [incSym, setIncSym] = useState(false);
 
-  const handleGenPass = (e) => {
+  let handleGenPass = (e) => {
     if (!incUpper && !incLower && !incSym && !incNum) {
-      notifyUser("Please select at least one option below.", true)
+      notifyUser(NONE_SELECTED, true)
     }
 
     let allowedChars = '';
@@ -40,19 +39,22 @@ function App() {
     setPassword(genPassword(allowedChars));
   }
 
-  const genPassword = (characterList) => {
+  let genPassword = (characterList) => {
     let password = '';
     const characterListLength = characterList.length;
 
-    for (let i = 0; i < passwordLen; i++) {
-      const characterIndex = Math.round(Math.random() * characterListLength);
-      password += characterList.charAt(characterIndex);
+    if (passwordLen < 8 || passwordLen > 20) {
+      notifyUser(INVALID_LEN, true)
+    } else {
+      for (let i = 0; i < passwordLen; i++) {
+        const characterIndex = Math.round(Math.random() * characterListLength);
+        password += characterList.charAt(characterIndex);
+      }
+      return password;
     }
-    return password;
   }
 
-
-  const copyToClipboard = () => {
+  let copyToClipboard = () => {
     const newTextArea = document.createElement('textarea');
     newTextArea.innerText = password;
     document.body.appendChild(newTextArea);
@@ -61,7 +63,7 @@ function App() {
     newTextArea.remove();
   }
 
-  const notifyUser = (message, hasError = false) => {
+  let notifyUser = (message, hasError = false) => {
     if (hasError) {
       toast.error(message, {
         position: 'top-center',
@@ -85,15 +87,16 @@ function App() {
     }
   }
 
-  const handleCopy = (e) => {
+  let handleCopy = (e) => {
     if (password === '') {
-      notifyUser('No password was copied.', true);
+      notifyUser(NO_PW, true);
     } else {
       copyToClipboard();
       notifyUser(COPY_SUCCESS);
     }
 
   }
+
 
   return (
     <div className="App">
@@ -112,6 +115,7 @@ function App() {
             <input defaultValue={passwordLen} onChange={(e) => setPasswordLen(e.target.value)}
               type="number" id="password-length" name="password-length" max="20" min="8" />
           </div>
+
 
           <div className="form-group">
             <label htmlFor="uppercase-letters">Include Uppercase Letters</label>
