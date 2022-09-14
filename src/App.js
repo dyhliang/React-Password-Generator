@@ -44,7 +44,7 @@ function App() {
     const characterListLength = characterList.length;
 
     if (passwordLen < 8 || passwordLen > 20) {
-      notifyUser(INVALID_LEN, true)
+      notifyUser(INVALID_LEN, true);
     } else {
       for (let i = 0; i < passwordLen; i++) {
         const characterIndex = Math.round(Math.random() * characterListLength);
