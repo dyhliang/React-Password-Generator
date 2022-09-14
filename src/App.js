@@ -1,9 +1,9 @@
 import './App.css';
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import { numbers, upperLetters, lowerLetters, symbols } from './characters'
-import 'react-toastify/dist/ReactToastify.css'
-import { COPY_SUCCESS, NONE_SELECTED, NO_PW, INVALID_LEN } from './msg'
+import { numbers, upperLetters, lowerLetters, symbols } from './characters';
+import 'react-toastify/dist/ReactToastify.css';
+import { COPY_SUCCESS, NONE_SELECTED, NO_PW, INVALID_LEN } from './msg';
 
 function App() {
   let [password, setPassword] = useState('');
@@ -15,7 +15,7 @@ function App() {
 
   let handleGenPass = (e) => {
     if (!incUpper && !incLower && !incSym && !incNum) {
-      notifyUser(NONE_SELECTED, true)
+      notifyUser(NONE_SELECTED, true);
     }
 
     let allowedChars = '';
