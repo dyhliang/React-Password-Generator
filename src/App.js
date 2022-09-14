@@ -43,7 +43,7 @@ function App() {
     let password = '';
     const characterListLength = characterList.length;
 
-    if (passwordLen < 8 || passwordLen > 20) {
+    if (passwordLen < 8 || passwordLen > 20 || Number.isInteger(passwordLen) === false) {
       notifyUser(INVALID_LEN, true);
     } else {
       for (let i = 0; i < passwordLen; i++) {
