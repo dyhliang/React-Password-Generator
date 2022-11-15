@@ -9,7 +9,7 @@ function App() {
   let [password, setPassword] = useState('');
   let [passwordLen, setPasswordLen] = useState(8);
   let [incUpper, setIncUpper] = useState(false);
-  let [incLower, setIncLower] = useState(false);
+  let [incLower, setIncLower] = useState(true);
   let [incNum, setIncNum] = useState(false);
   let [incSym, setIncSym] = useState(false);
 
@@ -115,17 +115,16 @@ function App() {
               type="number" id="password-length" name="password-length" max="20" min="8" />
           </div>
 
+          <div className="form-group">
+            <label htmlFor="lowercase-letters">Include Lowercase Letters</label>
+            <input checked={incLower} onChange={(e) => setIncLower(e.target.checked)}
+              type="checkbox" defaultChecked={true} id="lowercase-letters" name="lowercase-letters" />
+          </div>
 
           <div className="form-group">
             <label htmlFor="uppercase-letters">Include Uppercase Letters</label>
             <input checked={incUpper} onChange={(e) => setIncUpper(e.target.checked)}
               type="checkbox" id="uppercase-letters" name="uppercase-letters" />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="lowercase-letters">Include Lowercase Letters</label>
-            <input checked={incLower} onChange={(e) => setIncLower(e.target.checked)}
-              type="checkbox" id="lowercase-letters" name="lowercase-letters" />
           </div>
 
           <div className="form-group">
