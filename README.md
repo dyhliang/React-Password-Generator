@@ -2,6 +2,11 @@
 
 This app generates a password between 8 to 20 characters. The user has the option to select various types of characters within the password, including: lowercase letters, uppercase letters, numbers, and special symbols. At least one of those aforementioned options must be selected to successfully generate a password.
 
+Preview:
+<img width="1392" alt="Screenshot 2023-03-06 at 6 55 00 PM" src="https://user-images.githubusercontent.com/102781030/223283504-4f5bf0ff-793e-47f5-9fe7-655fc86892f1.png">
+
+<img width="1360" alt="Screenshot 2023-03-06 at 6 55 35 PM" src="https://user-images.githubusercontent.com/102781030/223283522-84a4cf47-a3a7-41ae-aa94-d34ce3a2cb8c.png">
+
 *Credit to https://wallpapersfortech.com for providing the background image.*
 
 
