@@ -1,6 +1,11 @@
-# [PassGen App](https://passgen-app.herokuapp.com)
+# PassGen
 
 This app generates a password between 8 to 20 characters. The user has the option to select various types of characters within the password, including: lowercase letters, uppercase letters, numbers, and special symbols. At least one of those aforementioned options must be selected to successfully generate a password.
+
+Previews:
+<img width="1222" alt="Screenshot 2023-03-06 at 6 56 56 PM" src="https://user-images.githubusercontent.com/102781030/223283667-89a667f7-aec0-496e-8377-531a586006a8.png">
+<img width="1283" alt="Screenshot 2023-03-06 at 6 56 46 PM" src="https://user-images.githubusercontent.com/102781030/223283669-688a2d5e-5241-40a9-9150-011c1b52ac54.png">
+<img width="1295" alt="Screenshot 2023-03-06 at 6 56 35 PM" src="https://user-images.githubusercontent.com/102781030/223283670-8458ab8c-ebd4-4b47-9152-0374a138e532.png">
 
 *Credit to https://wallpapersfortech.com for providing the background image.*
 
