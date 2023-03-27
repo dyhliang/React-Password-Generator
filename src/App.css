@@ -47,6 +47,7 @@
 
 .form-group{
     font-weight: bold;
+    font-size: medium;
     display: flex;
     justify-content: space-between;
     color: white;

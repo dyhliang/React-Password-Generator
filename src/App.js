@@ -110,31 +110,31 @@ function App() {
           </div>
 
           <div className='form-group'>
-            <label htmlFor='password-length'>Password Length</label>
+            <label htmlFor='password-length'> Password Length </label>
             <input defaultValue={passwordLen} onChange={(e) => setPasswordLen(e.target.value.replace(/[^0-9]/g, ""))}
               type="number" id="password-length" name="password-length" max="20" min="8" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="lowercase-letters">Include Lowercase Letters</label>
+            <label htmlFor="lowercase-letters"> Lowercase Letters </label>
             <input checked={incLower} onChange={(e) => setIncLower(e.target.checked)}
               type="checkbox" defaultChecked={true} id="lowercase-letters" name="lowercase-letters" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="uppercase-letters">Include Uppercase Letters</label>
+            <label htmlFor="uppercase-letters"> Uppercase Letters </label>
             <input checked={incUpper} onChange={(e) => setIncUpper(e.target.checked)}
               type="checkbox" id="uppercase-letters" name="uppercase-letters" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="symbols">Include Symbols</label>
+            <label htmlFor="symbols"> Symbols </label>
             <input checked={incSym} onChange={(e) => setIncSym(e.target.checked)}
               type="checkbox" id="symbols" name="symbols" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="numbers">Include Numbers</label>
+            <label htmlFor="numbers"> Numbers </label>
             <input checked={incNum} onChange={(e) => setIncNum(e.target.checked)}
               type="checkbox" id="numbers" name="numbers" />
           </div>
